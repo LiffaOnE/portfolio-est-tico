@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Resume - Start Bootstrap Theme</title>
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <title>Fuentes Felipe Portfolio</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/iconefeefe.png" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -47,7 +47,16 @@
                          Laguna del desierto 3831 · Rosario, Santa Fe · (341) 601-0647 ·
                         <a href="mailto:name@email.com">feliz.fuentes67@gmail.com</a>
                     </div>
-                    <p class="lead mb-5">Tengo experiencia en el aprovechamiento de marcos ágiles para proporcionar una sinopsis sólida para resúmenes de alto nivel. Los enfoques iterativos de la estrategia corporativa fomentan el pensamiento colaborativo para promover la propuesta de valor general.</p>
+                    <div id="id_01">
+                    <p class="lead mb-5" style="display: flex;">Tengo experiencia en el aprovechamiento de marcos ágiles para proporcionar una sinopsis sólida para resúmenes de alto nivel. Los enfoques iterativos de la estrategia corporativa fomentan el pensamiento colaborativo para promover la propuesta de valor general.
+                    <!-- <i class="fa fa-pen" onclick="changeText()"></i> -->
+                    <i class="fa fa-pen" onclick="cambiar_parrafo()"></i>
+                    </p>    
+                    </div>
+                    <div>
+                        <input id="edit-acercade" type="text" oninput="myFunction2(this.value)" style="display:none">
+                    </div>
+                    
                     <div class="social-icons">
                         <!-- se agregara en un futuro el linkedin -->
                         <!-- <a class="social-icon" href="#!"><i class="fab fa-linkedin-in"></i></a> -->
@@ -124,7 +133,7 @@
             <!-- Skills-->
             <section class="resume-section" id="skills">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">Skills</h2>
+                    <h2 class="mb-5">HABILIDADES</h2>
                     <div class="subheading mb-3">LENGUAJES Y HERRAMIENTAS DE PROGRAMACIÓN</div>
                     <ul class="list-inline dev-icons">
                         <li class="list-inline-item"><i class="fab fa-html5"></i></li>
@@ -204,5 +213,48 @@
         </div>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> 
+        <script>
+            // function para cambiar el texto estatico
+            // function changeText() {
+            //  document.getElementById("id_1").innerHTML = "esto se cambia";
+            // }
+            function cambiar_parrafo(){
+                document.getElementById("edit-acercade").style.display="block"
+                let texto = document.getElementById("id_01").innerText;
+                console.log(texto)
+            }
+            function myFunction2(valor){
+                document.getElementById("id_01").innerText=valor;
+            };
+
+            function logMessage(message){
+                console.log(message + "<br>");
+            }
+
+            // se fija si apretamos enter
+            let textarea=document.getElementById("edit-acercade")
+            textarea.addEventListener('keyup', (e) => {
+                logMessage(`Key "${e.key}" released  [event: keyup]`);
+                if (e.key=="Enter"){
+                    document.getElementById("edit-acercade").style.display="none"
+                }
+            });
+            // funca
+            function showFile(input){
+                let file = input.files[0];
+                alert(`File name: ${file.name}`);
+                alert(`Last modified: ${file.lastModified}`);
+
+                let reader = new FileReader();
+                reader.readAsText(file);
+                reader.onload = function() {
+                    console.log(reader.result);
+                    document.getElementById("id_01").innerText=reader.result;
+                };
+                reader.onerror = function() {
+                    console.log(reader.error)
+                };
+            }
+         </script>
     </body>
 </html>
